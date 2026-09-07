@@ -1,0 +1,280 @@
+﻿comuna,zona_prc,nombre_zona,categorias,zona_ds38,limite_dia,limite_noche,fundamento
+Santiago,Zona A,Zona A,R+Eq+AP+Inf+EP+AV,Zona III,65,50,"PRC Santiago Art. 30 Zona A: permite residencial, equipamiento, taller artesanal, infraestructura de transporte/sanitaria, espacio público y área verde."
+Santiago,Zona B,Zona B,R+Eq+AP+Inf+EP+AV,Zona III,65,50,"PRC Santiago Art. 30 Zona B: usos mixtos con presencia residencial, equipamiento y actividades productivas."
+Santiago,Zona D,Zona D,R+Eq+AP+Inf+EP+AV,Zona III,65,50,"PRC Santiago Art. 30 Zona D: usos mixtos con presencia residencial, equipamiento y actividades productivas."
+Santiago,Zona E,Zona E,R+Eq+AP+Inf+EP+AV,Zona III,65,50,"PRC Santiago Art. 30 Zona E: usos mixtos con presencia residencial, equipamiento y actividades productivas."
+Santiago,Zona F,Zona F,Eq+EP+AV,Zona II,60,45,"PRC Santiago Zona F: equipamiento cultural/deportivo, espacio público y áreas verdes."
+Santiago,Zona G,Zona G,EP+AV,Zona I,55,45,PRC Santiago Zona G: espacio público y áreas verdes.
+Santiago,Zona H,Zona H,AV+Eq,Zona II,60,45,PRC Santiago Zona H remite a PRMS art. 5.2.4.1.
+Providencia,UR,Uso Residencial,R + Eq + AP + Inf,Zona III,65,50,PRC Providencia Cuadro N°28 permite actividades productivas e infraestructura hasta Conjunto 1.
+Providencia,UpR,Uso preferentemente Residencial,R + Eq + AP + Inf,Zona III,65,50,PRC Providencia Cuadro N°28 permite actividades productivas e infraestructura hasta Conjunto 2.
+Providencia,UpR y Er,Uso preferentemente Residencial con Equipamientos restringidos,R + Eq + AP + Inf,Zona III,65,50,PRC Providencia Cuadro N°28 permite actividades productivas e infraestructura.
+Providencia,UpR y E,Uso preferentemente Residencial y de Equipamiento,R + Eq + AP + Inf,Zona III,65,50,PRC Providencia Cuadro N°28 permite actividades productivas e infraestructura.
+Providencia,UpR y ECr,Uso preferentemente Residencial y Equipamiento de Comercio restringido,R + Eq + AP + Inf,Zona III,65,50,PRC Providencia Cuadro N°28 permite actividades productivas e infraestructura.
+Providencia,UpEC,Uso preferentemente de Equipamiento Comercial,R + Eq + AP + Inf,Zona III,65,50,PRC Providencia Cuadro N°28 permite actividades productivas.
+Providencia,UpAP e Ir,Uso preferentemente de Actividades Productivas e Industria restringida,R + Eq + AP + Inf,Zona III,65,50,PRC Providencia Cuadro N°28 permite residencia equipamiento actividades productivas e infraestructura.
+Las Condes,UV/EAm1,UV/EAm1 Zona de Uso de Vivienda,R+Eq,Zona II,60,45,PRC Las Condes: zona residencial con equipamiento compatible.
+Las Condes,UV/EAm2,UV/EAm2 Zona de Uso de Vivienda,R+Eq,Zona II,60,45,PRC Las Condes: zona residencial con equipamiento compatible.
+Las Condes,UV/EAm3,UV/EAm3 Zona de Uso de Vivienda,R+Eq,Zona II,60,45,PRC Las Condes: zona residencial con equipamiento compatible.
+Las Condes,UV/EAm4,UV/EAm4 Zona de Uso de Vivienda,R+Eq,Zona II,60,45,PRC Las Condes: zona residencial con equipamiento compatible.
+Las Condes,UV1/EAm1,UV1/EAm1 Zona de Uso de Vivienda N°1 Equipamiento baja intensidad,R+Eq,Zona II,60,45,PRC Las Condes: vivienda con equipamiento en baja intensidad.
+Las Condes,UV1/EAm2,UV1/EAm2 Zona de Uso de Vivienda N°1 Equipamiento baja intensidad,R+Eq,Zona II,60,45,PRC Las Condes: vivienda con equipamiento en baja intensidad.
+Las Condes,UV1/EAm3,UV1/EAm3 Zona de Uso de Vivienda N°1 Equipamiento baja intensidad,R+Eq,Zona II,60,45,PRC Las Condes: vivienda con equipamiento en baja intensidad.
+Las Condes,UV1/EAm4,UV1/EAm4 Zona de Uso de Vivienda N°1 Equipamiento baja intensidad,R+Eq,Zona II,60,45,PRC Las Condes: vivienda con equipamiento en baja intensidad.
+Las Condes,UV2/EAm1,UV2/EAm1 Zona de Uso de Vivienda N°2,R+Eq,Zona II,60,45,PRC Las Condes: vivienda con equipamiento de menor intensidad.
+Las Condes,UV2/EAm2,UV2/EAm2 Zona de Uso de Vivienda N°2,R+Eq,Zona II,60,45,PRC Las Condes: vivienda con equipamiento de menor intensidad.
+Las Condes,UV2/EAm3,UV2/EAm3 Zona de Uso de Vivienda N°2,R+Eq,Zona II,60,45,PRC Las Condes: vivienda con equipamiento de menor intensidad.
+Las Condes,UV2/EAm4,UV2/EAm4 Zona de Uso de Vivienda N°2,R+Eq,Zona II,60,45,PRC Las Condes: vivienda con equipamiento de menor intensidad.
+Las Condes,UV3/EAm1,UV3/EAm1 Zona de Uso de Vivienda N°3,R+Eq+Inf,Zona III,65,50,PRC Las Condes: permite instalaciones y oficinas de media intensidad.
+Las Condes,UV3/EAm2,UV3/EAm2 Zona de Uso de Vivienda N°3,R+Eq+Inf,Zona III,65,50,PRC Las Condes: permite instalaciones y oficinas de media intensidad.
+Las Condes,UV3/EAm3,UV3/EAm3 Zona de Uso de Vivienda N°3,R+Eq+Inf,Zona III,65,50,PRC Las Condes: permite instalaciones y oficinas de media intensidad.
+Las Condes,UV3/EAm4,UV3/EAm4 Zona de Uso de Vivienda N°3,R+Eq+Inf,Zona III,65,50,PRC Las Condes: permite instalaciones y oficinas de media intensidad.
+Las Condes,UVO/EAm1,UVO/EAm1 Zona Vivienda y Oficina,R+Eq,Zona II,60,45,PRC Las Condes: vivienda y oficinas.
+Las Condes,UVO/EAm2,UVO/EAm2 Zona Vivienda y Oficina,R+Eq,Zona II,60,45,PRC Las Condes: vivienda y oficinas.
+Las Condes,UVO/EAm3,UVO/EAm3 Zona Vivienda y Oficina,R+Eq,Zona II,60,45,PRC Las Condes: vivienda y oficinas.
+Las Condes,UVO/EAm4,UVO/EAm4 Zona Vivienda y Oficina,R+Eq,Zona II,60,45,PRC Las Condes: vivienda y oficinas.
+Las Condes,UC1/EAm1,UC1/EAm1 Zona Comercial 1,Eq+AP,Zona III,65,50,PRC Las Condes: comercio e instituciones comerciales.
+Las Condes,UC1/EAm2,UC1/EAm2 Zona Comercial 1,Eq+AP,Zona III,65,50,PRC Las Condes: comercio e instituciones comerciales.
+Las Condes,UC1/EAm3,UC1/EAm3 Zona Comercial 1,Eq+AP,Zona III,65,50,PRC Las Condes: comercio e instituciones comerciales.
+Las Condes,UC1/EAm4,UC1/EAm4 Zona Comercial 1,Eq+AP,Zona III,65,50,PRC Las Condes: comercio e instituciones comerciales.
+Las Condes,UC2/EAm1,UC2/EAm1 Zona Comercial 2,Eq+AP,Zona III,65,50,PRC Las Condes: comercio e instituciones metropolitanas.
+Las Condes,UC2/EAm2,UC2/EAm2 Zona Comercial 2,Eq+AP,Zona III,65,50,PRC Las Condes: comercio e instituciones metropolitanas.
+Las Condes,UC2/EAm3,UC2/EAm3 Zona Comercial 2,Eq+AP,Zona III,65,50,PRC Las Condes: comercio e instituciones metropolitanas.
+Las Condes,UC2/EAm4,UC2/EAm4 Zona Comercial 2,Eq+AP,Zona III,65,50,PRC Las Condes: comercio e instituciones metropolitanas.
+Las Condes,UC3/EAm1,UC3/EAm1 Zona Comercial 3,Eq+AP,Zona III,65,50,PRC Las Condes: zona comercial.
+Las Condes,UC3/EAm2,UC3/EAm2 Zona Comercial 3,Eq+AP,Zona III,65,50,PRC Las Condes: zona comercial.
+Las Condes,UC3/EAm3,UC3/EAm3 Zona Comercial 3,Eq+AP,Zona III,65,50,PRC Las Condes: zona comercial.
+Las Condes,UC3/EAm4,UC3/EAm4 Zona Comercial 3,Eq+AP,Zona III,65,50,PRC Las Condes: zona comercial.
+San Bernardo,ZU1.1,ZU1.1 Plaza de Armas,Eq+AV,Zona II,60,45,PRC San Bernardo Art.55 centro comunal con equipamiento y áreas verdes.
+San Bernardo,ZU1.2,ZU1.2 Centro,R+Eq+Inf,Zona III,65,50,PRC San Bernardo Art.56 permite infraestructura de transporte asociada a estaciones ferroviarias.
+San Bernardo,ZU1.3,ZU1.3 Sur Nogales,R+Eq+Inf,Zona III,65,50,PRC San Bernardo Art.57 permite infraestructura ferroviaria.
+San Bernardo,ZU2,ZU2 Periferia Centro,R+Eq+AP+Inf,Zona III,65,50,PRC San Bernardo Art.58 permite actividad productiva inofensiva.
+San Bernardo,ZU3,ZU3 Triángulo Gran Avenida,Eq+AP+Inf,Zona III,65,50,PRC San Bernardo Art.59 permite actividad productiva inofensiva y talleres.
+San Bernardo,ZU4,ZU4 La Vara,R+Eq+AP,Zona III,65,50,PRC San Bernardo Art.60 permite actividades productivas y talleres.
+San Bernardo,ZU5,ZU5 Los Morros Lo Blanco,R+Eq,Zona II,60,45,PRC San Bernardo Art.61 predominantemente residencial y equipamiento.
+San Bernardo,ZU6,ZU6 Estación San Bernardo,R+Eq+AP+Inf,Zona III,65,50,PRC San Bernardo Art.62 permite actividad productiva inofensiva y estaciones ferroviarias.
+San Bernardo,ZU7,ZU7 Maestranza,R+Eq,Zona II,60,45,PRC San Bernardo Art.63 residencial y equipamiento.
+San Bernardo,ZU8,ZU8 La Selva,R+Eq+AP+Inf,Zona III,65,50,PRC San Bernardo Art.64 permite actividad productiva inofensiva.
+San Bernardo,ZU9,ZU9 Borde Oriente Av. Presidente Jorge Alessandri R,Eq+AP+Inf,Zona III,65,50,PRC San Bernardo Art.65 actividad productiva inofensiva.
+San Bernardo,ZU10,ZU10 Nos-Portales,R+Eq+AP,Zona III,65,50,PRC San Bernardo Art.66 permite actividad productiva inofensiva.
+San Bernardo,ZU11,ZU11 Localidad de Lo Herrera,R+Eq+AP,Zona III,65,50,PRC San Bernardo Art.67 permite actividad productiva inofensiva.
+San Bernardo,ZUE1,ZUE1 Cerro Chena,R+Eq,Zona II,60,45,PRC San Bernardo Art.68 residencial y equipamiento.
+San Bernardo,ZUE2,ZUE2 Los Morros Cerro Negro,R+Eq,Zona II,60,45,PRC San Bernardo Art.69 residencial y equipamiento.
+San Bernardo,ZUE3,ZUE3 La Masía,R+Eq,Zona II,60,45,PRC San Bernardo Art.70 residencial y equipamiento.
+San Bernardo,ZUE4,ZUE4 Nos San León,R+Eq,Zona II,60,45,PRC San Bernardo Art.71 residencial y equipamiento.
+San Bernardo,ZUE5,ZUE5 El Cerrillo,R+Eq,Zona II,60,45,PRC San Bernardo Art.72 residencial y equipamiento.
+San Bernardo,ZUE6,ZUE6 El Mariscal San Francisco,R+Eq,Zona II,60,45,PRC San Bernardo Art.73 residencial y equipamiento.
+San Bernardo,ZI1,ZI1 Zona Industrial Exclusiva Molesta e Inofensiva,AP+Inf,Zona IV,70,70,PRC San Bernardo Art.74 zona industrial exclusiva molesta e inofensiva.
+San Bernardo,ZI2,ZI2 Zona Industrial Inofensiva,AP+Eq,Zona III,65,50,PRC San Bernardo Art.75 zona industrial inofensiva.
+San Bernardo,ZE1,ZE1 Cementerios,Eq,Zona II,60,45,PRC San Bernardo Art.76 cementerios.
+San Bernardo,ZE2,ZE2 Zona Equipamiento Metropolitano,Eq+Inf,Zona III,65,50,PRC San Bernardo Art.77 equipamiento metropolitano.
+San Bernardo,ZE3,ZE3 Zona de Interés Comunal y Conservación Histórica,EP+Eq,Zona II,60,45,PRC San Bernardo Art.78 conservación histórica.
+San Bernardo,ZE4,ZE4 Zona de Transferencia de Pasajeros y de Carga,Inf+AP,Zona III,65,50,PRC San Bernardo Art.79 transferencia de pasajeros y carga.
+San Bernardo,ZE5,ZE5 Zona de Cerros Islas y Área Verde,AV,Zona I,55,45,PRC San Bernardo Art.80 áreas verdes.
+San Bernardo,ZE6,ZE6 Inmuebles de Conservación Histórica,EP,Zona II,60,45,PRC San Bernardo Art.81 conservación histórica.
+San Bernardo,ZE7,ZE7 Zona de Derrumbe y Asentamiento de Suelos,EP,Zona I,55,45,PRC San Bernardo Art.82 área de riesgo.
+Recoleta,U-E,Barrio La Vega Barrio Patronato y Ejes Comunales,R+Eq+AP+Inf,Zona III,65,50,PRC Recoleta Art.4.2 permite actividades productivas almacenamiento y transporte restringidos.
+Recoleta,U-E1,Barrio Bellavista,R+Eq+AP+Inf,Zona III,65,50,PRC Recoleta Art.4.2 permite actividades productivas y transporte restringido.
+Recoleta,U-E2,Parque Tecnologico El Salto,R+Eq+AP+Inf,Zona III,65,50,PRC Recoleta Art.4.2 permite actividades productivas almacenamiento y transporte.
+Recoleta,U-E3,Los Turistas,Eq,Zona II,60,45,PRC Recoleta Art.4.2 permite exclusivamente equipamiento.
+Recoleta,U-H,Área Norte y Oriente,R+Eq,Zona II,60,45,PRC Recoleta Art.4.2 zona preferentemente vivienda sin actividades productivas.
+Recoleta,U-EH,Mexico Centro,R+Eq+AP+Inf,Zona III,65,50,PRC Recoleta Art.4.2 permite actividades productivas almacenamiento y transporte restringido.
+Recoleta,Z-S1,Cementerios,Eq,Zona II,60,45,PRC Recoleta zona especial cementerios.
+Recoleta,Z-S2,Regimiento Buin,Inf,Zona III,65,50,PRC Recoleta equipamiento de seguridad e infraestructura militar.
+Recoleta,Z-S3,Monumentos Nacionales,EP+Eq,Zona II,60,45,PRC Recoleta conservación patrimonial y equipamiento.
+Recoleta,Z-S4,Inmuebles y Zonas de Conservacion Historica,EP+Eq,Zona II,60,45,PRC Recoleta conservación histórica.
+Recoleta,Z-S5,Sectores Especiales,EP+Eq,Zona II,60,45,PRC Recoleta sectores especiales patrimoniales.
+Recoleta,Z-S6,Artesanos Tirso de Molina,Eq+AP,Zona III,65,50,PRC Recoleta permite actividad artesanal.
+Recoleta,U-Ea,Sector Especial Seccional Entrecerros,R+Eq,Zona II,60,45,PRC Recoleta sector especial residencial y equipamiento.
+Recoleta,Z-R1,Zona No Edificable,AV,Zona I,55,45,PRC Recoleta zona no edificable.
+Recoleta,Z-R2,Zona Edificacion Restringida,AV+EP,Zona I,55,45,PRC Recoleta área de restricción.
+Ñuñoa,Z-1,Zona Z-1,R+Eq,Zona II,60,45,PRC Ñuñoa Art.25 permite residencial y equipamiento pero prohíbe actividades productivas.
+Ñuñoa,Z-1A,Zona Z-1A,R+Eq,Zona II,60,45,PRC Ñuñoa Art.25 permite residencial y equipamiento pero prohíbe actividades productivas.
+Ñuñoa,Z-1B,Zona Z-1B,R+Eq,Zona II,60,45,PRC Ñuñoa zona residencial con equipamiento.
+Ñuñoa,Z-1C,Zona Z-1C,R+Eq,Zona II,60,45,PRC Ñuñoa zona residencial con equipamiento.
+Ñuñoa,Z-1D,Zona Z-1D,R+Eq,Zona II,60,45,PRC Ñuñoa zona residencial con equipamiento.
+Ñuñoa,Z-2,Zona Z-2,R+Eq,Zona II,60,45,PRC Ñuñoa zona residencial predominante.
+Ñuñoa,Z-3,Zona Z-3,R+Eq,Zona II,60,45,PRC Ñuñoa zona residencial y equipamiento.
+Ñuñoa,Z-3A,Zona Z-3A,R+Eq,Zona II,60,45,PRC Ñuñoa zona residencial y equipamiento.
+Ñuñoa,Z-4,Zona Z-4,R+Eq+Inf,Zona III,65,50,PRC Ñuñoa permite infraestructura y equipamiento de mayor intensidad.
+Ñuñoa,Z-4M,Zona Z-4m,R+Eq+Inf,Zona III,65,50,PRC Ñuñoa permite infraestructura y equipamiento mixto.
+Ñuñoa,Z-4A,Zona Z-4A,R+Eq+Inf,Zona III,65,50,PRC Ñuñoa permite infraestructura y equipamiento.
+Ñuñoa,Z-4B,Zona Z-4B,R+Eq+Inf,Zona III,65,50,PRC Ñuñoa permite infraestructura y equipamiento.
+Ñuñoa,Z-4C,Zona Z-4C,R+Eq+Inf,Zona III,65,50,PRC Ñuñoa permite infraestructura y equipamiento.
+Ñuñoa,Z-4C+R,Zona Z-4C+R,R+Eq+Inf,Zona III,65,50,PRC Ñuñoa zona mixta residencial.
+Ñuñoa,Z-4C+RB,Zona Z-4C+RB,R+Eq+Inf,Zona III,65,50,PRC Ñuñoa zona mixta residencial.
+Ñuñoa,Z-5,Zona Z-5,R+Eq,Zona II,60,45,PRC Ñuñoa residencial y equipamiento.
+Ñuñoa,Z-5A,Zona Z-5A,R+Eq,Zona II,60,45,PRC Ñuñoa residencial y equipamiento.
+Ñuñoa,Z-5B,Zona Z-5B,R+Eq,Zona II,60,45,PRC Ñuñoa residencial y equipamiento.
+Ñuñoa,Z-6,Zona Z-6,R+Eq+Inf,Zona III,65,50,PRC Ñuñoa equipamiento e infraestructura de mayor intensidad.
+Ñuñoa,ZI-1,Zona ZI-1,AP+Inf,Zona IV,70,70,PRC Ñuñoa zona industrial.
+Ñuñoa,Z-R1,Zona Z-R1,AV+EP,Zona I,55,45,PRC Ñuñoa zona de restricción.
+Ñuñoa,Z-US(1),Zona Z-US(1),Eq+Inf,Zona III,65,50,PRC Ñuñoa uso especial.
+Ñuñoa,Z-US(2),Zona Z-US(2),Eq+Inf,Zona III,65,50,PRC Ñuñoa uso especial.
+Ñuñoa,Z-US(3),Zona Z-US(3),Eq+Inf,Zona III,65,50,PRC Ñuñoa uso especial.
+Ñuñoa,Z-US(4),Zona Z-US(4),Eq+Inf,Zona III,65,50,PRC Ñuñoa uso especial.
+Ñuñoa,Z-MH1,Zona Patrimonial MH1,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación patrimonial.
+Ñuñoa,Z-MH2,Zona Patrimonial MH2,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación patrimonial.
+Ñuñoa,Z-MH3,Zona Patrimonial MH3,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación patrimonial.
+Ñuñoa,Z-ZT1,Zona Típica ZT1,EP+Eq,Zona II,60,45,PRC Ñuñoa zona típica.
+Ñuñoa,Z-ZT2,Zona Típica ZT2,EP+Eq,Zona II,60,45,PRC Ñuñoa zona típica.
+Ñuñoa,Z-ZT3,Zona Típica ZT3,EP+Eq,Zona II,60,45,PRC Ñuñoa zona típica.
+Ñuñoa,Z-ZT4,Zona Típica ZT4,EP+Eq,Zona II,60,45,PRC Ñuñoa zona típica.
+Ñuñoa,Z-ZT5,Zona Típica ZT5,EP+Eq,Zona II,60,45,PRC Ñuñoa zona típica.
+Ñuñoa,Z-ZT6,Zona Típica ZT6,EP+Eq,Zona II,60,45,PRC Ñuñoa zona típica.
+Ñuñoa,Z-ICH1,Zona Inmueble Conservación Histórica 1,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación histórica.
+Ñuñoa,Z-ICH2,Zona Inmueble Conservación Histórica 2,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación histórica.
+Ñuñoa,Z-ICH3,Zona Inmueble Conservación Histórica 3,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación histórica.
+Ñuñoa,Z-ICH4,Zona Inmueble Conservación Histórica 4,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación histórica.
+Ñuñoa,Z-ICH5,Zona Inmueble Conservación Histórica 5,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación histórica.
+Ñuñoa,Z-ZCH1,Zona Conservación Histórica 1,EP+Eq,Zona II,60,45,PRC Ñuñoa conservación histórica.
+El Bosque,ZONA C,ZONA C,R+Eq+AV,Zona II,60,45,PRC El Bosque EPRC2025 Art.2: permite vivienda comercio oficinas equipamiento áreas verdes talleres inofensivos e industrias/bodegas inofensivas; AP inofensiva se asimila a Equipamiento.
+El Bosque,ZONA H,ZONA H,R+Eq+AV,Zona II,60,45,PRC El Bosque EPRC2025 Art.2: permite vivienda comercio oficinas equipamiento áreas verdes talleres inofensivos e industrias/bodegas inofensivas; AP inofensiva se asimila a Equipamiento.
+El Bosque,ZONA R,ZONA R,R+Eq+AV,Zona II,60,45,PRC El Bosque EPRC2025 Art.2: permite vivienda comercio oficinas equipamiento áreas verdes y talleres inofensivos; AP inofensiva se asimila a Equipamiento.
+El Bosque,ZONA 1-2-3,ZONA 1-2-3 Residencial Equipamiento Talleres,R+Eq,Zona II,60,45,PRC El Bosque EPRC2025 Art.2: permite residencial equipamiento y talleres inofensivos; AP inofensiva se asimila a Equipamiento.
+El Bosque,ZONA 4,ZONA 4 Industrial,AP,Zona IV,70,70,PRC El Bosque EPRC2025 Art.2: permite industrias inofensivas e industrias molestas no fumígenas ni peligrosas; al permitir industria molesta corresponde Actividad Productiva.
+El Bosque,ZONA SECCIONAL LO MORENO Z-A,ZONA SECCIONAL LO MORENO Z-A,R+Eq,Zona II,60,45,PRC El Bosque EPRC2025 Art.2: permite vivienda y equipamiento vecinal/mediano.
+El Bosque,Z-B,Z-B Equipamiento Deportivo,Eq,Zona II,60,45,PRC El Bosque EPRC2025 Art.2: permite equipamiento de deportes de escala mediana.
+Padre Hurtado,A,Centro Comunal,R+Eq+AV+EP,Zona II,60,45,Permite vivienda equipamiento espacio publico y area verde.
+Padre Hurtado,B1,Corredor Regional,R+Eq+AV+EP,Zona II,60,45,Permite vivienda equipamiento espacio publico y area verde.
+Padre Hurtado,B2,Corredor Intercomunal,R+Eq+AV+EP,Zona II,60,45,Permite vivienda equipamiento espacio publico y area verde.
+Padre Hurtado,B3,Corredor Local,R+Eq+AV+EP,Zona II,60,45,Permite vivienda equipamiento espacio publico y area verde.
+Padre Hurtado,C1,Habitacional,R+Eq+AV+EP,Zona II,60,45,Permite vivienda equipamiento basico espacio publico y area verde.
+Padre Hurtado,C2,Habitacional,R+Eq+AV+EP,Zona II,60,45,Permite vivienda equipamiento basico espacio publico y area verde.
+Padre Hurtado,C3,Habitacional,R+Eq+AV+EP,Zona II,60,45,Permite vivienda equipamiento basico espacio publico y area verde.
+Padre Hurtado,H1,Habitacional,R+Eq+AV+EP,Zona II,60,45,Permite vivienda equipamiento basico comercio espacio publico y area verde.
+Padre Hurtado,D,Mixta,R+Eq+Inf+AV+EP,Zona III,65,50,Permite AP inofensivas equipamiento infraestructura vivienda espacio publico y area verde; AP inofensiva homologada como equipamiento.
+Padre Hurtado,E1,Centro Civico,Eq+AV+EP,Zona II,60,45,Permite equipamiento espacio publico y area verde.
+Padre Hurtado,E2,Equipamiento Comunitario,R+Eq+AV+EP,Zona II,60,45,Permite equipamiento vivienda espacio publico y area verde.
+Padre Hurtado,E3,Recreacional Deportivo,Eq+AV+EP,Zona II,60,45,Permite equipamiento recreacional espacio publico y area verde.
+Padre Hurtado,E4,Historico Cultural,Eq+AV+EP,Zona II,60,45,Permite equipamiento cultural espacio publico y area verde.
+Padre Hurtado,E5,Areas Verdes e Infraestructura,Eq+Inf+AV+EP,Zona III,65,50,Permite infraestructura equipamiento deportivo espacio publico y area verde.
+Padre Hurtado,F1,Industria,AP+Eq+Inf+AV+EP,Zona IV,70,70,Permite actividades productivas molestas e inofensivas equipamiento infraestructura espacio publico y area verde.
+Maipu,ZC-1,Centro Civico,Eq+Inf+EP+AV,Zona III,65,50,PRC Maipu ZC-1 permite equipamiento e infraestructura de transporte; corresponde Zona III.
+Maipu,ZC-2,Centro Comercial,R+Eq+Inf+EP+AV,Zona III,65,50,PRC Maipu ZC-2 permite residencia equipamiento e infraestructura de transporte; corresponde Zona III.
+Maipu,ZC-3,Mixta Comercio y Servicios,R+Eq+Inf+EP+AV,Zona III,65,50,PRC Maipu zona mixta con residencia equipamiento e infraestructura; corresponde Zona III.
+Maipu,ZC-4,Mixta Equipamiento y Vivienda,R+Eq+Inf+EP+AV,Zona III,65,50,PRC Maipu zona mixta con equipamiento vivienda e infraestructura; corresponde Zona III.
+Maipu,ZH-1,Habitacional 1,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-2,Habitacional 2,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-3,Habitacional 3,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-4,Habitacional 4,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-5,Habitacional 5,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-6,Habitacional 6,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-7,Habitacional 7,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-8,Habitacional 8,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-9,Habitacional 9,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZH-10,Habitacional 10,R+Eq+EP+AV,Zona II,60,45,PRC Maipu zona habitacional con equipamiento; actividades productivas prohibidas.
+Maipu,ZI-1,Industrial 1,AP+Eq+Inf+EP+AV,Zona III,65,50,PRC Maipu zona industrial con actividades productivas equipamiento e infraestructura; por combinación con equipamiento corresponde Zona III según Res Ex SMA 491/2016.
+Maipu,ZI-2,Industrial 2,AP+Eq+Inf+EP+AV,Zona III,65,50,PRC Maipu zona industrial con actividades productivas equipamiento e infraestructura; por combinación con equipamiento corresponde Zona III según Res Ex SMA 491/2016.
+Maipu,ZI-3,Industrial 3,AP+Eq+Inf+EP+AV,Zona III,65,50,PRC Maipu zona industrial con actividades productivas equipamiento e infraestructura; por combinación con equipamiento corresponde Zona III según Res Ex SMA 491/2016.
+Melipilla,Z-1,Zona Z-1,R+Eq,Zona II,60,45,PRC Melipilla zona central; permite vivienda; equipamiento; comercio; servicios; talleres y almacenamiento inofensivos asimilados a equipamiento.
+Melipilla,Z-2,Zona Z-2,R+Eq+Inf,Zona III,65,50,PRC Melipilla zona residencial mixta; permite vivienda; equipamiento; talleres y almacenamiento inofensivos asimilados a equipamiento; terminales de transporte.
+Melipilla,Z-3,Zona Z-3,R+Eq,Zona II,60,45,PRC Melipilla zona mixta consolidada; permite vivienda; equipamiento; comercio; servicios; talleres y almacenamiento inofensivos asimilados a equipamiento.
+Melipilla,Z-4,Zona Z-4,R+Eq+Inf,Zona III,65,50,PRC Melipilla zona mixta; permite vivienda; equipamiento; comercio; servicios; talleres y almacenamiento inofensivos asimilados a equipamiento; terminales de transporte.
+Melipilla,Z-5,Zona Z-5,R+Eq,Zona II,60,45,PRC Melipilla zona habitacional; permite vivienda; equipamiento menor; talleres y almacenamiento inofensivos asimilados a equipamiento.
+Melipilla,Z-6,Zona Z-6,R,Zona II,60,45,PRC Melipilla zona exclusivamente residencial; solo permite vivienda.
+Melipilla,ZI-1,Zona ZI-1,AP,Zona IV,70,70,PRC Melipilla zona industrial; permite talleres artesanales inofensivos y molestos; almacenamiento inofensivo y molesto; industrias inofensivas e industrias molestas.
+Melipilla,ZI-2,Zona ZI-2,AP,Zona IV,70,70,PRC Melipilla zona industrial; permite talleres artesanales inofensivos y molestos; industrias inofensivas; molestas e insalubres.
+Melipilla,ZI-3,Zona ZI-3,AP,Zona IV,70,70,PRC Melipilla zona industrial; permite talleres artesanales inofensivos y molestos; almacenamiento inofensivo y molesto.
+Melipilla,ZR1,Zona ZR1,AV,Zona I,55,45,PRC Melipilla zona de restricción por riesgo de asentamientos humanos; solo permite áreas verdes y forestación.
+Melipilla,ZR2,Zona ZR2,Inf,Zona IV,70,70,PRC Melipilla zona de restricción ferroviaria; permite exclusivamente infraestructura ferroviaria.
+Melipilla,ZR3,Zona ZR3,Inf,Zona IV,70,70,PRC Melipilla zona de restricción de acueductos y canales de regadío; infraestructura hidráulica.
+Melipilla,ZR4,Zona ZR4,Inf,Zona IV,70,70,PRC Melipilla zona de protección de pozos; filtros; estanques de agua potable y plantas de tratamiento; infraestructura sanitaria.
+Melipilla,ZR5,Zona ZR5,AV+Eq,Zona I,55,45,PRC Melipilla zona de preservación del medio ambiente natural; permite áreas verdes; forestación; recreación con construcciones ligeras.
+Melipilla,ZE-1,Zona ZE-1,Eq,Zona II,60,45,PRC Melipilla zona cementerio; equipamiento especial.
+Melipilla,ZE-2,Zona ZE-2,Eq+AV,Zona II,60,45,PRC Melipilla zona deportiva; permite deporte; recreación; áreas verdes.
+Quinta Normal,Zona A,Zona A Preferente Residencial A,R+Eq,Zona II,60,45,PRC Quinta Normal Zona A preferentemente residencial; permite vivienda y equipamiento; prohíbe actividades productivas e infraestructura.
+Quinta Normal,Zona B,Zona B Preferente Residencial B,R+Eq,Zona II,60,45,PRC Quinta Normal Zona B preferentemente residencial; permite vivienda y equipamiento; prohíbe actividades productivas e infraestructura.
+Quinta Normal,Zona C,Zona C Mixta Residencial Equipamiento y Actividades Productivas sin Bodegas,R+Eq+AP+AV+EP,Zona III,65,50,PRC Quinta Normal Zona C permite vivienda equipamiento actividades productivas compatibles área verde y espacio público; prohíbe industrias peligrosas y bodegas.
+Quinta Normal,Zona D,Zona D Mixta Residencial Equipamiento y Actividades Productivas,R+Eq+AP+AV+EP,Zona III,65,50,PRC Quinta Normal Zona D permite vivienda equipamiento actividades productivas compatibles área verde y espacio público; prohíbe industrias peligrosas.
+Quinta Normal,Zona E,Zona E Mixta Residencial Equipamiento y Actividades Productivas,R+Eq+AP+AV+EP,Zona III,65,50,PRC Quinta Normal Zona E permite vivienda equipamiento actividades productivas compatibles área verde y espacio público; prohíbe industrias peligrosas.
+Quinta Normal,Zona F,Zona F Mixta Residencial y Equipamiento,R+Eq+AV+EP,Zona II,60,45,PRC Quinta Normal Zona F permite vivienda equipamiento área verde y espacio público; prohíbe actividades productivas.
+Quinta Normal,Zona G,Zona G Influencia Gruta de Lourdes,R+Eq+AV+EP,Zona II,60,45,PRC Quinta Normal Zona G permite vivienda equipamiento área verde y espacio público; prohíbe actividades productivas.
+Quinta Normal,Zona H,Zona H Mixta Residencial Equipamiento con Menor Grado de Actividades Productivas,R+Eq+AP+AV+EP,Zona III,65,50,PRC Quinta Normal Zona H permite vivienda equipamiento y actividades productivas restringidas; área verde y espacio público.
+Quinta Normal,Zona I,Zona I Eje Preferente de Equipamiento Comercio y Servicios I,R+Eq+AP+AV+EP,Zona III,65,50,PRC Quinta Normal Zona I permite vivienda equipamiento comercio servicios actividades productivas compatibles área verde y espacio público.
+Quinta Normal,Zona J,Zona J Eje Preferente de Equipamiento Comercio y Servicios,R+Eq+AP+AV+EP,Zona III,65,50,PRC Quinta Normal Zona J permite vivienda equipamiento comercio servicios actividades productivas compatibles área verde y espacio público.
+Quinta Normal,Zona K,Zona K Eje Preferente de Equipamiento Comercio y Servicios,R+Eq+AP+AV+EP,Zona III,65,50,PRC Quinta Normal Zona K permite vivienda equipamiento comercio servicios actividades productivas compatibles área verde y espacio público.
+Quinta Normal,Zona L,Zona L Mixta Residencial Equipamiento con Menor Grado de Actividades Productivas,R+Eq+AP+AV+EP,Zona III,65,50,PRC Quinta Normal Zona L permite vivienda equipamiento y actividades productivas restringidas; área verde y espacio público.
+Quinta Normal,Zona M,Zona M Equipamiento,Eq,Zona II,60,45,PRC Quinta Normal Zona M destinada exclusivamente a equipamiento; prohíbe vivienda y actividades productivas.
+Quinta Normal,Zona N,Zona N Mixta Residencial y Equipamiento,R+Eq,Zona II,60,45,PRC Quinta Normal Zona N permite vivienda y equipamiento; prohíbe actividades productivas.
+Quinta Normal,Zona O,Zona O Mixta Industrial y Equipamiento,Eq+AP,Zona III,65,50,PRC Quinta Normal Zona O permite equipamiento y actividades productivas compatibles; prohíbe uso residencial.
+Quinta Normal,Zona IE,Zona IE Infraestructura Energética,Inf,Zona III,65,50,PRC Quinta Normal Zona especial destinada a infraestructura energética.
+Quinta Normal,Zona IT,Zona IT Infraestructura Transporte Ferroviario,Inf,Zona III,65,50,PRC Quinta Normal Zona especial destinada a infraestructura ferroviaria.
+Quinta Normal,ZCH-1,Zona de Conservacion Historica Simon Bolivar,R+Eq+EP,Zona II,60,45,PRC Quinta Normal zona de conservación histórica.
+Quinta Normal,ZCH-2,Zona de Conservacion Historica El Poligono,R+Eq+EP,Zona II,60,45,PRC Quinta Normal zona de conservación histórica.
+Quinta Normal,ZCH-3,Zona de Conservacion Historica Mapocho,R+Eq+EP,Zona II,60,45,PRC Quinta Normal zona de conservación histórica.
+Quinta Normal,ICH-1,Inmueble de Conservacion Historica Basilica de Lourdes,Eq+EP,Zona II,60,45,PRC Quinta Normal inmueble de conservación histórica.
+Quinta Normal,ICH-2,Inmueble de Conservacion Historica Lourdes 640,Eq+EP,Zona II,60,45,PRC Quinta Normal inmueble de conservación histórica.
+Quinta Normal,ICH-3,Inmueble de Conservacion Historica Mapocho 4951,Eq+EP,Zona II,60,45,PRC Quinta Normal inmueble de conservación histórica.
+Quinta Normal,PM,Parque Metropolitano,AV,Zona I,55,45,PRC Quinta Normal parque metropolitano.
+Quinta Normal,PI,Parque Intercomunal,AV,Zona I,55,45,PRC Quinta Normal parque intercomunal.
+Quinta Normal,AVP,Plaza,AV,Zona I,55,45,PRC Quinta Normal área verde pública.
+Quinta Normal,ARDU,Areas Restringidas al Desarrollo Urbano,AV+EP,Zona I,55,45,PRC Quinta Normal área restringida al desarrollo urbano.
+Pedro Aguirre Cerda,ZR1,Zona Residencial Mixta 1,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR1 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR2,Zona Residencial Mixta 2,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR2 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR3,Zona Residencial Mixta 3,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR3 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR4,Zona Residencial Mixta 4,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR4 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR5,Zona Residencial Mixta 5,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR5 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR6,Zona Residencial Mixta 6,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR6 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR7,Zona Residencial Mixta 7,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR7 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR8,Zona Residencial Mixta 8,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR8 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR9,Zona Residencial Mixta 9,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR9 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR10,Zona Residencial Mixta 10,R+Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZR10 permite vivienda equipamiento espacio público y áreas verdes; prohíbe actividades productivas.
+Pedro Aguirre Cerda,ZR11,Zona Mixta Residencial Productiva 11,R+Eq+AP+AV+EP,Zona III,65,50,PRC Pedro Aguirre Cerda ZR11 permite vivienda equipamiento actividades productivas inofensivas espacio público y áreas verdes.
+Pedro Aguirre Cerda,ZE1,Zona de Equipamiento 1,Eq+AP+AV+EP,Zona III,65,50,PRC Pedro Aguirre Cerda ZE1 permite equipamiento y bodegas calificadas como inofensivas además de espacio público y áreas verdes.
+Pedro Aguirre Cerda,ZE2,Zona de Equipamiento 2,Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZE2 destinada principalmente a equipamiento con espacio público y áreas verdes.
+Pedro Aguirre Cerda,ZE2M,Zona de Equipamiento 2M,Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZE2M destinada principalmente a equipamiento con espacio público y áreas verdes.
+Pedro Aguirre Cerda,ZE2LV,Zona de Equipamiento 2LV,Eq+AP+AV+EP,Zona III,65,50,PRC Pedro Aguirre Cerda ZE2LV permite equipamiento y actividades productivas inofensivas o molestas además de espacio público y áreas verdes.
+Pedro Aguirre Cerda,ZE3,Zona de Equipamiento 3,Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZE3 destinada principalmente a equipamiento con espacio público y áreas verdes.
+Pedro Aguirre Cerda,ZE3M,Zona de Equipamiento 3M,Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZE3M destinada principalmente a equipamiento con espacio público y áreas verdes.
+Pedro Aguirre Cerda,ZE4,Zona de Equipamiento 4,Eq+AV+EP,Zona II,60,45,PRC Pedro Aguirre Cerda ZE4 destinada exclusivamente a equipamiento espacio público y áreas verdes.
+Pedro Aguirre Cerda,ZAP1,Zona de Actividad Productiva Molesta,AP+Eq+AV+EP,Zona IV,70,70,PRC Pedro Aguirre Cerda ZAP1 permite industrias almacenamiento y actividades productivas calificadas como molestas además de equipamiento y áreas verdes.
+Pedro Aguirre Cerda,ZI1,Zona de Infraestructura Energetica,Inf+Eq+AV+EP,Zona IV,70,70,PRC Pedro Aguirre Cerda ZI1 destinada a infraestructura energética y equipamiento asociado.
+Pedro Aguirre Cerda,ZI2,Zona de Infraestructura Sanitaria,Inf+Eq+AV+EP,Zona IV,70,70,PRC Pedro Aguirre Cerda ZI2 destinada a infraestructura sanitaria y equipamiento asociado.
+Pedro Aguirre Cerda,AVI1,Parques BUPI Intercomunales,AV,Zona I,55,45,PRC Pedro Aguirre Cerda parque intercomunal y área verde.
+Pedro Aguirre Cerda,AVI2,Parques DUP Intercomunales,AV,Zona I,55,45,PRC Pedro Aguirre Cerda parque intercomunal y área verde.
+Pedro Aguirre Cerda,AVI3,Areas Verdes Asociadas a Pozos Extractivos,AV,Zona I,55,45,PRC Pedro Aguirre Cerda área verde asociada a pozos extractivos.
+Pedro Aguirre Cerda,AV1,Espacio Publico Plazas Parques y Areas Verdes BUPI,AV+EP,Zona I,55,45,PRC Pedro Aguirre Cerda espacio público plazas parques y áreas verdes.
+Pedro Aguirre Cerda,AV2,Parques y Plazas DUP,AV,Zona I,55,45,PRC Pedro Aguirre Cerda parques y plazas declarados de utilidad pública.
+Pedro Aguirre Cerda,AV3,Areas Verdes,AV,Zona I,55,45,PRC Pedro Aguirre Cerda áreas verdes.
+La Florida,U-VEV1,U-VEV1 Uso preferente vivienda y equipamiento vecinal 1,R+Eq+Inf+AV+EP,Zona III,65,50,PRC La Florida U-VEV1 permite residencial equipamiento infraestructura de transporte espacio público y áreas verdes.
+La Florida,U-VEV2,U-VEV2 Uso preferente vivienda y equipamiento vecinal 2,R+Eq+Inf+AV+EP,Zona III,65,50,PRC La Florida U-VEV2 permite residencial equipamiento infraestructura de transporte espacio público y áreas verdes.
+La Florida,U-VEV3,U-VEV3 Uso preferente vivienda y equipamiento vecinal 3,R+Eq+Inf+AV+EP,Zona III,65,50,PRC La Florida U-VEV3 permite residencial equipamiento infraestructura sanitaria energética transporte espacio público y áreas verdes.
+La Florida,U-VEV4,U-VEV4 Uso preferente vivienda y equipamiento vecinal 4,R+Eq+Inf+AV+EP,Zona III,65,50,PRC La Florida U-VEV4 permite residencial equipamiento infraestructura sanitaria energética transporte espacio público y áreas verdes.
+La Florida,U-EC1,U-EC1 Uso preferente equipamiento comunal 1,R+Eq+AP+Inf+AV+EP,Zona III,65,50,PRC La Florida U-EC1 permite residencial equipamiento actividades productivas e infraestructura.
+La Florida,U-EC3,U-EC3 Uso preferente equipamiento comunal 3,R+Eq+Inf+AV+EP,Zona III,65,50,PRC La Florida U-EC3 permite residencial equipamiento infraestructura sanitaria energética y transporte.
+La Florida,U-EC4,U-EC4 Uso preferente equipamiento intercomunal 4,R+Eq+AP+Inf+AV+EP,Zona III,65,50,PRC La Florida U-EC4 permite residencial equipamiento actividades productivas e infraestructura.
+La Florida,Z-AM,Zona de Edificación Aislada de Altura Media,R+Eq,Zona II,60,45,PRC La Florida zona predominantemente residencial con equipamiento.
+La Florida,Z-AA1,Zona de Edificación Aislada Alta,R+Eq,Zona II,60,45,PRC La Florida zona residencial de alta densidad y equipamiento.
+La Florida,Z-AA2,Zona de Transición a Edificación Aislada Alta,R+Eq,Zona II,60,45,PRC La Florida zona residencial de transición y equipamiento.
+La Florida,Z-AA+CM,Zona de Edificación Aislada Alta con Continuidad Media,R+Eq+AP,Zona III,65,50,PRC La Florida sector centro de usos mixtos y actividades productivas compatibles.
+La Florida,Z-AA+CB/CM,Zona de Edificación Aislada Alta con Continuidad Baja y Media,R+Eq+AP,Zona III,65,50,PRC La Florida sector centro de usos mixtos y actividades productivas compatibles.
+La Florida,AV1.1,Parque Intercomunal,AV,Zona I,55,45,PRC La Florida parque intercomunal y área verde.
+La Florida,AV1.2,Parque Intercomunal,AV,Zona I,55,45,PRC La Florida parque intercomunal y área verde.
+La Florida,AV1.3,Parque Intercomunal,AV,Zona I,55,45,PRC La Florida parque intercomunal y área verde.
+La Florida,AV2,Cerros Islas,AV,Zona I,55,45,PRC La Florida cerros islas y áreas verdes.
+La Florida,AV3,Parques Quebradas,AV,Zona I,55,45,PRC La Florida parques quebradas y áreas verdes.
+La Florida,AV4,Avenidas Parque,AV,Zona I,55,45,PRC La Florida avenidas parque y áreas verdes.
+La Florida,AV5,Área Verde Ex Pozo de Áridos,AV,Zona I,55,45,PRC La Florida área verde ex pozo de áridos.
+La Florida,AV6,Área Verde Zona en Pendiente,AV,Zona I,55,45,PRC La Florida área verde en zona de pendiente.
+La Florida,ESP-1,Manzana Cívica,Eq,Zona II,60,45,PRC La Florida manzana cívica destinada a equipamiento.
+La Florida,ESP-2,Terrenos Consultorio,Eq,Zona II,60,45,PRC La Florida equipamiento de salud.
+La Florida,ESP-3,Congregación Salesiana Lo Cañas,Eq,Zona II,60,45,PRC La Florida equipamiento educacional y religioso.
+La Florida,ESP-4,Precordillera,AV+EP,Zona I,55,45,PRC La Florida zona especial de protección precordillerana.
+La Florida,RI-1,Terminales Rodoviarios,Inf,Zona IV,70,70,PRC La Florida infraestructura de transporte.
+La Florida,RI-2,Infraestructura Sanitaria y Energética,Inf,Zona IV,70,70,PRC La Florida infraestructura sanitaria y energética.
+La Florida,R-1,Zona de Restricción por Quebradas,AV,Zona I,55,45,PRC La Florida zona de restricción por quebradas.
+La Florida,R-2,Zona de Restricción por Canales,AV,Zona I,55,45,PRC La Florida zona de restricción por canales.
+La Florida,R-3,Zona de Riesgo por Derrumbe y Asentamiento de Suelo,AV,Zona I,55,45,PRC La Florida zona de riesgo por derrumbe y asentamiento.
+La Florida,R-4,Zona de Riesgo Geofísico Asociado a Remoción en Masa,AV,Zona I,55,45,PRC La Florida zona de riesgo geofísico.
+La Florida,R-5,Zona de Restricción por Pendiente,AV,Zona I,55,45,PRC La Florida zona de restricción por pendiente.
+La Florida,PEDC-3,Protección Ecológica con Desarrollo Controlado,AV+EP,Zona I,55,45,PRC La Florida zona de protección ecológica.
+La Florida,PL,Plazas,AV+EP,Zona I,55,45,PRC La Florida plazas y espacio público.
+La Florida,ED-1,Estadio Entel,Eq+AV,Zona II,60,45,PRC La Florida recinto deportivo y áreas verdes.
+La Florida,ED-2,Balneario Municipal,Eq+AV,Zona II,60,45,PRC La Florida recinto recreacional y áreas verdes.
+La Florida,ED-3,Estadio Contraloría General de la República,Eq+AV,Zona II,60,45,PRC La Florida recinto deportivo y áreas verdes.
+La Florida,ED-4,Estadio Caja de Compensación La Araucana,Eq+AV,Zona II,60,45,PRC La Florida recinto deportivo y áreas verdes.
+La Florida,ED-6,Estadio Municipal de La Florida Audax Italiano,Eq+AV,Zona II,60,45,PRC La Florida recinto deportivo y áreas verdes.
+La Florida,ED-8,Complejo Deportivo Estrella Manuel Rodríguez,Eq+AV,Zona II,60,45,PRC La Florida recinto deportivo y áreas verdes.
+La Florida,ED-9,Deportivo Bayer,Eq+AV,Zona II,60,45,PRC La Florida recinto deportivo y áreas verdes.
+La Florida,ED-11,Complejo Deportivo Gabriela Mistral,Eq+AV,Zona II,60,45,PRC La Florida recinto deportivo y áreas verdes.

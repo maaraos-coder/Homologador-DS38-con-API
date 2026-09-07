@@ -1,0 +1,11 @@
+streamlit
+geopandas
+pandas
+folium
+streamlit-folium
+shapely
+geopy
+pyogrio
+openpyxl
+fastapi
+uvicorn[standard]
