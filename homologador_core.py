@@ -452,6 +452,84 @@ def _normalizar_comuna_solicitada(comuna):
     return None
 
 
+
+def _nombre_comuna_desde_shp(shp):
+    nombre_archivo = shp.split("/")[-1]
+    comuna = nombre_archivo
+    for r in [
+        "IPT_13_PRC_",
+        "IPT_13_PRI_",
+        "IPT_13_PNSECC_",
+        ".shp",
+    ]:
+        comuna = comuna.replace(r, "")
+    comuna = comuna.replace("_", " ").strip()
+
+    especiales = {
+        "Nunoa AP": "Ñuñoa",
+        "Pudahuel San Francisco": "Pudahuel",
+    }
+    comuna = especiales.get(comuna, comuna)
+
+    for b in [" AP", " Rural", " Urbano"]:
+        if comuna.endswith(b):
+            comuna = comuna.replace(b, "").strip()
+
+    return comuna
+
+
+def _archivos_normativos_comuna(comuna_clave):
+    archivos = []
+    for shp in listar_shapefiles():
+        if (
+            "/PRC/" not in shp
+            and "/PRI/" not in shp
+            and "PNSECC" not in shp
+        ):
+            continue
+        if "Patrimonio" in shp or "ZNE" in shp or "poligono" in shp.lower():
+            continue
+
+        if normalizar(_nombre_comuna_desde_shp(shp)) == comuna_clave:
+            archivos.append(shp)
+
+    def prioridad(shp):
+        n = shp.upper()
+        if "_PRC_" in n:
+            return (0, n)
+        if "_PRI_" in n:
+            return (1, n)
+        if "PNSECC" in n:
+            return (2, n)
+        return (3, n)
+
+    return sorted(archivos, key=prioridad)
+
+
+def _cargar_capas_normativas_comuna(comuna_clave):
+    archivos = _archivos_normativos_comuna(comuna_clave)
+    capas = []
+
+    for shp in archivos:
+        try:
+            g = normalizar_columnas(cargar_shp(shp))
+            if not g.empty:
+                g["fuente_normativa"] = "PRC"
+                capas.append(g)
+        except Exception:
+            continue
+
+    if not capas:
+        return crear_gdf_vacio(), archivos
+
+    combinado = gpd.GeoDataFrame(
+        pd.concat(capas, ignore_index=True),
+        geometry="geometry",
+        crs="EPSG:4326",
+    )
+    return combinado, archivos
+
+
 def _cargar_capas_para_comuna(comuna_clave):
     indice = crear_indice_comunas()
     if comuna_clave not in indice:
@@ -459,11 +537,8 @@ def _cargar_capas_para_comuna(comuna_clave):
 
     comuna_info = indice[comuna_clave]
 
-    if comuna_info.get("archivo"):
-        gdf_prc = normalizar_columnas(cargar_shp(comuna_info["archivo"]))
-        gdf_prc["fuente_normativa"] = "PRC"
-    else:
-        gdf_prc = crear_gdf_vacio()
+    # Cargar todas las capas normativas comunales.
+    gdf_prc, archivos_comuna = _cargar_capas_normativas_comuna(comuna_clave)
 
     capa_prms_lu = buscar_capa_prms_lu()
     capa_prms_uso = buscar_capa_prms_uso_suelo()
@@ -475,32 +550,26 @@ def _cargar_capas_para_comuna(comuna_clave):
         cargar_shp(capa_prms_uso) if capa_prms_uso else crear_gdf_vacio()
     )
 
-    if not gdf_prc.empty:
-        xmin, ymin, xmax, ymax = gdf_prc.total_bounds
-        try:
-            gdf_prms_lu = gdf_prms_lu_total.cx[xmin:xmax, ymin:ymax].copy()
-        except Exception:
-            gdf_prms_lu = gdf_prms_lu_total.copy()
-        try:
-            gdf_prms_uso = gdf_prms_uso_total.cx[xmin:xmax, ymin:ymax].copy()
-        except Exception:
-            gdf_prms_uso = gdf_prms_uso_total.copy()
-    else:
-        gdf_prms_uso = filtrar_por_comuna(gdf_prms_uso_total, comuna_info["nombre"])
-        if not gdf_prms_uso.empty:
-            xmin, ymin, xmax, ymax = gdf_prms_uso.total_bounds
-            try:
-                gdf_prms_lu = gdf_prms_lu_total.cx[xmin:xmax, ymin:ymax].copy()
-            except Exception:
-                gdf_prms_lu = gdf_prms_lu_total.copy()
-        else:
-            gdf_prms_lu = filtrar_por_comuna(gdf_prms_lu_total, comuna_info["nombre"])
+    # PRMS de usos de suelo: filtrar por comuna si el atributo lo permite.
+    gdf_prms_uso = filtrar_por_comuna(
+        gdf_prms_uso_total, comuna_info["nombre"]
+    )
+    if gdf_prms_uso.empty:
+        gdf_prms_uso = gdf_prms_uso_total.copy()
+
+    # IMPORTANTE: el límite urbano PRMS se consulta contra la capa completa.
+    # No se recorta por el bbox de un PRC/PNSECC, porque eso puede clasificar
+    # erróneamente como rural un punto urbano situado fuera de un seccional.
+    gdf_prms_lu = gdf_prms_lu_total.copy()
 
     gdf_prms_lu = normalizar_columnas(gdf_prms_lu)
     gdf_prms_lu["fuente_normativa"] = "PRMS_LU"
 
     gdf_prms_uso = normalizar_columnas(gdf_prms_uso)
     gdf_prms_uso["fuente_normativa"] = "PRMS_USO_Suelo"
+
+    comuna_info = dict(comuna_info)
+    comuna_info["archivos_normativos"] = archivos_comuna
 
     return comuna_info, gdf_prc, gdf_prms_uso, gdf_prms_lu, gdf_prms_uso_total
 
