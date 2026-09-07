@@ -404,13 +404,16 @@ def crear_gdf_vacio():
 
 @st.cache_data
 def cargar_tabla_homologacion():
-    """Carga la tabla maestra y agrega las reglas locales actualizadas de Puente Alto."""
+    """
+    Carga la tabla general y superpone las reglas actualizadas de Puente Alto.
+    Las reglas antiguas de Puente Alto del CSV general se excluyen para evitar
+    que tengan prioridad sobre homologacion_puente_alto.csv.
+    """
     tablas = []
 
     try:
         base = pd.read_csv(TABLA_HOMOLOGACION_PATH)
         if not base.empty:
-            # Evita que una regla antigua de Puente Alto gane prioridad.
             if "comuna" in base.columns:
                 base = base[
                     base["comuna"].apply(normalizar) != normalizar("Puente Alto")
@@ -421,9 +424,9 @@ def cargar_tabla_homologacion():
 
     try:
         if os.path.exists(TABLA_PUENTE_ALTO_PATH):
-            pa = pd.read_csv(TABLA_PUENTE_ALTO_PATH)
-            if not pa.empty:
-                tablas.append(pa)
+            puente_alto = pd.read_csv(TABLA_PUENTE_ALTO_PATH)
+            if not puente_alto.empty:
+                tablas.append(puente_alto)
     except Exception:
         pass
 
@@ -690,7 +693,7 @@ def crear_indice_comunas():
                 "archivo": None
             }
 
-    # Puente Alto actualizado: el shapefile local tiene prioridad sobre el ZIP histórico.
+    # Override: Puente Alto actualizado localmente tiene prioridad sobre el ZIP histórico.
     if os.path.exists(PUENTE_ALTO_SHP_PATH):
         indice[normalizar("Puente Alto")] = {
             "nombre": "Puente Alto",
@@ -704,20 +707,42 @@ def crear_indice_comunas():
 # CARGA Y NORMALIZACIÓN DE CAPAS
 # =========================================================
 
+def _reparar_texto_mojibake(valor):
+    """Corrige textos tipo educaciÃ³n si el DBF fue leído con codificación incorrecta."""
+    if not isinstance(valor, str):
+        return valor
+    if "Ã" not in valor and "Â" not in valor:
+        return valor
+    try:
+        return valor.encode("latin1").decode("utf-8")
+    except Exception:
+        return valor
+
+
 @st.cache_data
 def cargar_shp(shp):
     if not shp:
         return crear_gdf_vacio()
 
-    # Override local actualizado para Puente Alto.
     if shp == "__LOCAL_PUENTE_ALTO__":
         if not os.path.exists(PUENTE_ALTO_SHP_PATH):
             return crear_gdf_vacio()
+
         gdf = gpd.read_file(PUENTE_ALTO_SHP_PATH)
+
         if gdf.crs is None:
-            raise ValueError("El shapefile local de Puente Alto no tiene CRS definido.")
+            raise ValueError(
+                "El shapefile local de Puente Alto no tiene sistema de referencia definido."
+            )
+
         gdf = gdf.to_crs(epsg=4326)
+
+        for col in ["COMUNA", "SECTOR", "ZONA", "NOMBRE", "UPREF", "UPERM", "UPROH"]:
+            if col in gdf.columns:
+                gdf[col] = gdf[col].apply(_reparar_texto_mojibake)
+
         gdf["archivo_origen"] = PUENTE_ALTO_SHP_PATH
+        gdf["fuente_normativa"] = "PRC"
         return gdf
 
     ruta = f"zip://{ZIP_PATH}!{shp}"
@@ -1097,9 +1122,11 @@ def homologar_por_tabla_sma491(categorias):
 def _formatear_limite(valor):
     if pd.isna(valor):
         return "—"
+
     texto = str(valor).strip()
     if not texto or texto.lower() == "nan":
         return "—"
+
     try:
         numero = float(texto)
         return f"{int(numero)} dBA" if numero.is_integer() else f"{numero:g} dBA"
@@ -1132,9 +1159,16 @@ def homologar_ds38(fila, estado_lu=None):
             if not fundamento or fundamento.lower() == "nan":
                 fundamento = (
                     "La normativa aplicable no permite efectuar una homologación automática. "
-                    "Se requiere revisión del IPT y de los antecedentes normativos específicos."
+                    "Se requiere revisión del Instrumento de Planificación Territorial y "
+                    "de los antecedentes normativos específicos."
                 )
-            return ("Revisión requerida", "—", "—", fundamento, "Revisión normativa")
+            return (
+                "Revisión requerida",
+                "—",
+                "—",
+                fundamento,
+                "Revisión normativa"
+            )
 
         return (
             zona_csv,
@@ -1210,24 +1244,36 @@ def buscar_punto_en_capa(lat, lon, gdf, tolerancia_m=50):
 
 
 def debe_revisar_prms(fila):
+    """
+    Sólo deriva al PRMS cuando existe una instrucción normativa explícita.
+    IMPORTANTE: las zonas del PRC actualizado de Puente Alto pueden mencionar
+    "PRMS" en su nombre o fundamento; eso NO significa que deba abandonarse
+    el polígono PRC y reemplazarse por PRMS_USO_Suelo.
+    """
+    archivo = str(fila.get("archivo_origen", "") or "")
+    comuna = normalizar(fila.get("COMUNA", ""))
+
+    if (
+        comuna == normalizar("Puente Alto")
+        and "PRC_Puente_Alto" in archivo.replace("\\", "/")
+    ):
+        return False
+
     texto = texto_atributos(fila)
 
-    claves = [
+    claves_explicitas = [
         "revisar prms",
         "ver prms",
-        "segun prms",
-        "según prms",
         "aplica prms",
         "remitase prms",
         "remítase prms",
         "remitirse prms",
         "normativa prms",
         "segun el prms",
-        "según el prms",
-        "prms"
+        "según el prms"
     ]
 
-    return any(clave in texto for clave in claves)
+    return any(clave in texto for clave in claves_explicitas)
 
 
 def buscar_jerarquico(lat, lon, gdf_prc, gdf_prms_uso, tolerancia_m):
@@ -2004,7 +2050,7 @@ try:
 
         folium.GeoJson(
             gdf_prc_mapa,
-            name=f"PRC {comuna_info['nombre']}",
+            name=f"PRC {comuna_info['nombre']} (local actualizado)" if comuna_info["nombre"] == "Puente Alto" else f"PRC {comuna_info['nombre']}",
             tooltip=folium.GeoJsonTooltip(
                 fields=[
                     col for col in ["COMUNA", "ZONA", "NOMBRE"]

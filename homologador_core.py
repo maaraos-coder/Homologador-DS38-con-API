@@ -90,6 +90,7 @@ def crear_gdf_vacio():
 
 def cargar_tabla_homologacion():
     tablas = []
+
     try:
         base = pd.read_csv(TABLA_HOMOLOGACION_PATH)
         if not base.empty:
@@ -103,9 +104,9 @@ def cargar_tabla_homologacion():
 
     try:
         if os.path.exists(TABLA_PUENTE_ALTO_PATH):
-            pa = pd.read_csv(TABLA_PUENTE_ALTO_PATH)
-            if not pa.empty:
-                tablas.append(pa)
+            puente_alto = pd.read_csv(TABLA_PUENTE_ALTO_PATH)
+            if not puente_alto.empty:
+                tablas.append(puente_alto)
     except Exception:
         pass
 
@@ -233,6 +234,17 @@ def crear_indice_comunas():
 
     return indice
 
+def _reparar_texto_mojibake(valor):
+    if not isinstance(valor, str):
+        return valor
+    if 'Ã' not in valor and 'Â' not in valor:
+        return valor
+    try:
+        return valor.encode('latin1').decode('utf-8')
+    except Exception:
+        return valor
+
+
 def cargar_shp(shp):
     if not shp:
         return crear_gdf_vacio()
@@ -240,11 +252,20 @@ def cargar_shp(shp):
     if shp == '__LOCAL_PUENTE_ALTO__':
         if not os.path.exists(PUENTE_ALTO_SHP_PATH):
             return crear_gdf_vacio()
+
         gdf = gpd.read_file(PUENTE_ALTO_SHP_PATH)
+
         if gdf.crs is None:
             raise ValueError('El shapefile local de Puente Alto no tiene CRS definido.')
+
         gdf = gdf.to_crs(epsg=4326)
+
+        for col in ['COMUNA', 'SECTOR', 'ZONA', 'NOMBRE', 'UPREF', 'UPERM', 'UPROH']:
+            if col in gdf.columns:
+                gdf[col] = gdf[col].apply(_reparar_texto_mojibake)
+
         gdf['archivo_origen'] = PUENTE_ALTO_SHP_PATH
+        gdf['fuente_normativa'] = 'PRC'
         return gdf
 
     ruta = f'zip://{ZIP_PATH}!{shp}'
@@ -379,8 +400,13 @@ def _formatear_limite(valor):
 
 def homologar_ds38(fila, estado_lu=None):
     if estado_lu == 'Fuera de límite urbano PRMS / área rural':
-        return ('Zona Rural', 'Rf + 10 dBA, con tope Zona III', 'Rf + 10 dBA, con tope Zona III',
-                'El punto se encuentra fuera del límite urbano PRMS; corresponde evaluación como Zona Rural del D.S. N°38/2011 MMA.', 'Rural')
+        return (
+            'Zona Rural',
+            'Rf + 10 dBA, con tope Zona III',
+            'Rf + 10 dBA, con tope Zona III',
+            'El punto se encuentra fuera del límite urbano PRMS; corresponde evaluación como Zona Rural del D.S. N°38/2011 MMA.',
+            'Rural'
+        )
 
     regla = homologar_por_tabla_prc(
         fila.get('COMUNA', ''),
@@ -446,9 +472,24 @@ def buscar_punto_en_capa(lat, lon, gdf, tolerancia_m=50):
         return gpd.GeoDataFrame()
 
 def debe_revisar_prms(fila):
+    archivo = str(fila.get('archivo_origen', '') or '')
+    comuna = normalizar(fila.get('COMUNA', ''))
+
+    # Un nombre/fundamento de Puente Alto puede mencionar PRMS sin que corresponda
+    # reemplazar la zonificación PRC por PRMS_USO_Suelo.
+    if (
+        comuna == normalizar('Puente Alto')
+        and 'PRC_Puente_Alto' in archivo.replace('\\\\', '/')
+    ):
+        return False
+
     texto = texto_atributos(fila)
-    claves = ['revisar prms', 'ver prms', 'segun prms', 'según prms', 'aplica prms', 'remitase prms', 'remítase prms', 'remitirse prms', 'normativa prms', 'segun el prms', 'según el prms', 'prms']
-    return any((clave in texto for clave in claves))
+    claves_explicitas = [
+        'revisar prms', 'ver prms', 'aplica prms',
+        'remitase prms', 'remítase prms', 'remitirse prms',
+        'normativa prms', 'segun el prms', 'según el prms'
+    ]
+    return any(clave in texto for clave in claves_explicitas)
 
 def buscar_jerarquico(lat, lon, gdf_prc, gdf_prms_uso, tolerancia_m):
     resultado_prc = buscar_punto_en_capa(lat, lon, gdf_prc, tolerancia_m)
@@ -552,7 +593,7 @@ def _nombre_comuna_desde_shp(shp):
 
 
 def _archivos_normativos_comuna(comuna_clave):
-    # Puente Alto actualizado: reemplaza las capas históricas del ZIP.
+    # Para Puente Alto se usa exclusivamente el shapefile local actualizado.
     if comuna_clave == normalizar("Puente Alto") and os.path.exists(PUENTE_ALTO_SHP_PATH):
         return ["__LOCAL_PUENTE_ALTO__"]
 
