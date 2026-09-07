@@ -277,6 +277,8 @@ st.warning(
 ZIP_PATH = "data/IPTMetropolitana.zip"
 TABLA_HOMOLOGACION_PATH = "rules/homologacion_prc.csv"
 TABLA_PRMS_PATH = "rules/homologacion_prms.csv"
+TABLA_PUENTE_ALTO_PATH = "rules/homologacion_puente_alto.csv"
+PUENTE_ALTO_SHP_PATH = "data/PRC_Puente_Alto/IPT_13_PRC_Puente_Alto.shp"
 
 # =========================================================
 # UTILIDADES
@@ -402,10 +404,33 @@ def crear_gdf_vacio():
 
 @st.cache_data
 def cargar_tabla_homologacion():
+    """Carga la tabla maestra y agrega las reglas locales actualizadas de Puente Alto."""
+    tablas = []
+
     try:
-        return pd.read_csv(TABLA_HOMOLOGACION_PATH)
+        base = pd.read_csv(TABLA_HOMOLOGACION_PATH)
+        if not base.empty:
+            # Evita que una regla antigua de Puente Alto gane prioridad.
+            if "comuna" in base.columns:
+                base = base[
+                    base["comuna"].apply(normalizar) != normalizar("Puente Alto")
+                ].copy()
+            tablas.append(base)
     except Exception:
+        pass
+
+    try:
+        if os.path.exists(TABLA_PUENTE_ALTO_PATH):
+            pa = pd.read_csv(TABLA_PUENTE_ALTO_PATH)
+            if not pa.empty:
+                tablas.append(pa)
+    except Exception:
+        pass
+
+    if not tablas:
         return pd.DataFrame()
+
+    return pd.concat(tablas, ignore_index=True)
         
 @st.cache_data
 def cargar_tabla_prms():
@@ -665,6 +690,13 @@ def crear_indice_comunas():
                 "archivo": None
             }
 
+    # Puente Alto actualizado: el shapefile local tiene prioridad sobre el ZIP histórico.
+    if os.path.exists(PUENTE_ALTO_SHP_PATH):
+        indice[normalizar("Puente Alto")] = {
+            "nombre": "Puente Alto",
+            "archivo": "__LOCAL_PUENTE_ALTO__"
+        }
+
     return indice
 
 
@@ -677,12 +709,21 @@ def cargar_shp(shp):
     if not shp:
         return crear_gdf_vacio()
 
-    ruta = f"zip://{ZIP_PATH}!{shp}"
+    # Override local actualizado para Puente Alto.
+    if shp == "__LOCAL_PUENTE_ALTO__":
+        if not os.path.exists(PUENTE_ALTO_SHP_PATH):
+            return crear_gdf_vacio()
+        gdf = gpd.read_file(PUENTE_ALTO_SHP_PATH)
+        if gdf.crs is None:
+            raise ValueError("El shapefile local de Puente Alto no tiene CRS definido.")
+        gdf = gdf.to_crs(epsg=4326)
+        gdf["archivo_origen"] = PUENTE_ALTO_SHP_PATH
+        return gdf
 
+    ruta = f"zip://{ZIP_PATH}!{shp}"
     gdf = gpd.read_file(ruta)
     gdf = gdf.to_crs(epsg=4326)
     gdf["archivo_origen"] = shp
-
     return gdf
 
 
@@ -1053,6 +1094,19 @@ def homologar_por_tabla_sma491(categorias):
     )
 
 
+def _formatear_limite(valor):
+    if pd.isna(valor):
+        return "—"
+    texto = str(valor).strip()
+    if not texto or texto.lower() == "nan":
+        return "—"
+    try:
+        numero = float(texto)
+        return f"{int(numero)} dBA" if numero.is_integer() else f"{numero:g} dBA"
+    except Exception:
+        return texto if "dba" in texto.lower() else f"{texto} dBA"
+
+
 def homologar_ds38(fila, estado_lu=None):
     if estado_lu == "Fuera de límite urbano PRMS / área rural":
         return (
@@ -1063,30 +1117,36 @@ def homologar_ds38(fila, estado_lu=None):
             "Rural"
         )
 
-    comuna = fila.get("COMUNA", "")
-    zona_prc = fila.get("ZONA", "")
-    nombre_zona = fila.get("NOMBRE", "")
-
     regla = homologar_por_tabla_prc(
-        comuna,
-        zona_prc,
-        nombre_zona
+        fila.get("COMUNA", ""),
+        fila.get("ZONA", ""),
+        fila.get("NOMBRE", "")
     )
 
     if regla:
+        zona_csv = str(regla.get("zona_ds38", "")).strip()
+        categorias_csv = str(regla.get("categorias", "")).strip()
+        fundamento = str(regla.get("fundamento", "")).strip()
+
+        if zona_csv.upper() == "REVISAR" or categorias_csv.upper() == "REVISAR":
+            if not fundamento or fundamento.lower() == "nan":
+                fundamento = (
+                    "La normativa aplicable no permite efectuar una homologación automática. "
+                    "Se requiere revisión del IPT y de los antecedentes normativos específicos."
+                )
+            return ("Revisión requerida", "—", "—", fundamento, "Revisión normativa")
+
         return (
-            regla["zona_ds38"],
-            f'{regla["limite_dia"]} dBA',
-            f'{regla["limite_noche"]} dBA',
-            regla["fundamento"],
-            regla["categorias"]
+            zona_csv,
+            _formatear_limite(regla.get("limite_dia", "")),
+            _formatear_limite(regla.get("limite_noche", "")),
+            fundamento,
+            categorias_csv
         )
 
     categorias = detectar_categorias_oguc(fila)
     zona, dia, noche, criterio = homologar_por_tabla_sma491(categorias)
-
     categorias_texto = " + ".join(sorted(categorias)) if categorias else "No detectadas"
-
     return zona, dia, noche, criterio, categorias_texto
 
 
@@ -1331,23 +1391,21 @@ def mostrar_resultado(lat, lon, gdf_prc, gdf_prms_uso, gdf_prms_lu, tolerancia_m
         )
 
     if regla_csv:
-        zona_ds38 = regla_csv.get("zona_ds38", zona_ds38)
+        zona_csv = str(regla_csv.get("zona_ds38", "")).strip()
+        categorias_csv = str(regla_csv.get("categorias", "")).strip()
 
-        limite_dia_csv = regla_csv.get("limite_dia", limite_dia)
-        limite_noche_csv = regla_csv.get("limite_noche", limite_noche)
-
-        if str(limite_dia_csv).strip().isdigit():
-            limite_dia = f"{limite_dia_csv} dBA"
+        if zona_csv.upper() == "REVISAR" or categorias_csv.upper() == "REVISAR":
+            zona_ds38 = "Revisión requerida"
+            limite_dia = "—"
+            limite_noche = "—"
+            criterio = regla_csv.get("fundamento", criterio)
+            categorias = "Revisión normativa"
         else:
-            limite_dia = limite_dia_csv
-
-        if str(limite_noche_csv).strip().isdigit():
-            limite_noche = f"{limite_noche_csv} dBA"
-        else:
-            limite_noche = limite_noche_csv
-
-        criterio = regla_csv.get("fundamento", criterio)
-        categorias = regla_csv.get("categorias", categorias)
+            zona_ds38 = regla_csv.get("zona_ds38", zona_ds38)
+            limite_dia = _formatear_limite(regla_csv.get("limite_dia", limite_dia))
+            limite_noche = _formatear_limite(regla_csv.get("limite_noche", limite_noche))
+            criterio = regla_csv.get("fundamento", criterio)
+            categorias = regla_csv.get("categorias", categorias)
 
     fuente = fila.get("fuente_normativa", "")
     metodo = fila.get("metodo_busqueda", "")

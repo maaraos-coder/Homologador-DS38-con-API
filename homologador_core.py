@@ -11,6 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent
 ZIP_PATH = str(BASE_DIR / "data" / "IPTMetropolitana.zip")
 TABLA_HOMOLOGACION_PATH = str(BASE_DIR / "rules" / "homologacion_prc.csv")
 TABLA_PRMS_PATH = str(BASE_DIR / "rules" / "homologacion_prms.csv")
+TABLA_PUENTE_ALTO_PATH = str(BASE_DIR / "rules" / "homologacion_puente_alto.csv")
+PUENTE_ALTO_SHP_PATH = str(BASE_DIR / "data" / "PRC_Puente_Alto" / "IPT_13_PRC_Puente_Alto.shp")
 
 
 def normalizar(texto):
@@ -87,10 +89,27 @@ def crear_gdf_vacio():
     return gpd.GeoDataFrame({'COMUNA': [], 'ZONA': [], 'NOMBRE': [], 'UPERM': [], 'UPREF': [], 'UPROH': [], 'SUELO': [], 'DECRETO': [], 'PLANO': [], 'fuente_normativa': [], 'archivo_origen': [], 'observacion_jerarquia': []}, geometry=[], crs='EPSG:4326')
 
 def cargar_tabla_homologacion():
+    tablas = []
     try:
-        return pd.read_csv(TABLA_HOMOLOGACION_PATH)
+        base = pd.read_csv(TABLA_HOMOLOGACION_PATH)
+        if not base.empty:
+            if "comuna" in base.columns:
+                base = base[
+                    base["comuna"].apply(normalizar) != normalizar("Puente Alto")
+                ].copy()
+            tablas.append(base)
     except Exception:
-        return pd.DataFrame()
+        pass
+
+    try:
+        if os.path.exists(TABLA_PUENTE_ALTO_PATH):
+            pa = pd.read_csv(TABLA_PUENTE_ALTO_PATH)
+            if not pa.empty:
+                tablas.append(pa)
+    except Exception:
+        pass
+
+    return pd.concat(tablas, ignore_index=True) if tablas else pd.DataFrame()
 
 def cargar_tabla_prms():
     try:
@@ -205,11 +224,29 @@ def crear_indice_comunas():
     for clave, nombre in faltantes.items():
         if clave not in indice:
             indice[clave] = {'nombre': nombre, 'archivo': None}
+
+    if os.path.exists(PUENTE_ALTO_SHP_PATH):
+        indice[normalizar("Puente Alto")] = {
+            'nombre': 'Puente Alto',
+            'archivo': '__LOCAL_PUENTE_ALTO__'
+        }
+
     return indice
 
 def cargar_shp(shp):
     if not shp:
         return crear_gdf_vacio()
+
+    if shp == '__LOCAL_PUENTE_ALTO__':
+        if not os.path.exists(PUENTE_ALTO_SHP_PATH):
+            return crear_gdf_vacio()
+        gdf = gpd.read_file(PUENTE_ALTO_SHP_PATH)
+        if gdf.crs is None:
+            raise ValueError('El shapefile local de Puente Alto no tiene CRS definido.')
+        gdf = gdf.to_crs(epsg=4326)
+        gdf['archivo_origen'] = PUENTE_ALTO_SHP_PATH
+        return gdf
+
     ruta = f'zip://{ZIP_PATH}!{shp}'
     gdf = gpd.read_file(ruta)
     gdf = gdf.to_crs(epsg=4326)
@@ -327,15 +364,51 @@ def homologar_por_tabla_sma491(categorias):
         return ('Zona I', '55 dBA', '45 dBA', 'Uso Residencial solo o combinado únicamente con Área Verde/Espacio Público.')
     return ('No clasificada', '-', '-', 'No se detectaron categorías suficientes para homologar automáticamente.')
 
+def _formatear_limite(valor):
+    if pd.isna(valor):
+        return "—"
+    texto = str(valor).strip()
+    if not texto or texto.lower() == "nan":
+        return "—"
+    try:
+        numero = float(texto)
+        return f"{int(numero)} dBA" if numero.is_integer() else f"{numero:g} dBA"
+    except Exception:
+        return texto if "dba" in texto.lower() else f"{texto} dBA"
+
+
 def homologar_ds38(fila, estado_lu=None):
     if estado_lu == 'Fuera de límite urbano PRMS / área rural':
-        return ('Zona Rural', 'Rf + 10 dBA, con tope Zona III', 'Rf + 10 dBA, con tope Zona III', 'El punto se encuentra fuera del límite urbano PRMS; corresponde evaluación como Zona Rural del D.S. N°38/2011 MMA.', 'Rural')
-    comuna = fila.get('COMUNA', '')
-    zona_prc = fila.get('ZONA', '')
-    nombre_zona = fila.get('NOMBRE', '')
-    regla = homologar_por_tabla_prc(comuna, zona_prc, nombre_zona)
+        return ('Zona Rural', 'Rf + 10 dBA, con tope Zona III', 'Rf + 10 dBA, con tope Zona III',
+                'El punto se encuentra fuera del límite urbano PRMS; corresponde evaluación como Zona Rural del D.S. N°38/2011 MMA.', 'Rural')
+
+    regla = homologar_por_tabla_prc(
+        fila.get('COMUNA', ''),
+        fila.get('ZONA', ''),
+        fila.get('NOMBRE', '')
+    )
+
     if regla:
-        return (regla['zona_ds38'], f"{regla['limite_dia']} dBA", f"{regla['limite_noche']} dBA", regla['fundamento'], regla['categorias'])
+        zona_csv = str(regla.get('zona_ds38', '')).strip()
+        categorias_csv = str(regla.get('categorias', '')).strip()
+        fundamento = str(regla.get('fundamento', '')).strip()
+
+        if zona_csv.upper() == 'REVISAR' or categorias_csv.upper() == 'REVISAR':
+            if not fundamento or fundamento.lower() == 'nan':
+                fundamento = (
+                    'La normativa aplicable no permite efectuar una homologación automática. '
+                    'Se requiere revisión del IPT y de los antecedentes normativos específicos.'
+                )
+            return ('Revisión requerida', '—', '—', fundamento, 'Revisión normativa')
+
+        return (
+            zona_csv,
+            _formatear_limite(regla.get('limite_dia', '')),
+            _formatear_limite(regla.get('limite_noche', '')),
+            fundamento,
+            categorias_csv
+        )
+
     categorias = detectar_categorias_oguc(fila)
     zona, dia, noche, criterio = homologar_por_tabla_sma491(categorias)
     categorias_texto = ' + '.join(sorted(categorias)) if categorias else 'No detectadas'
@@ -479,6 +552,10 @@ def _nombre_comuna_desde_shp(shp):
 
 
 def _archivos_normativos_comuna(comuna_clave):
+    # Puente Alto actualizado: reemplaza las capas históricas del ZIP.
+    if comuna_clave == normalizar("Puente Alto") and os.path.exists(PUENTE_ALTO_SHP_PATH):
+        return ["__LOCAL_PUENTE_ALTO__"]
+
     archivos = []
     for shp in listar_shapefiles():
         if (
@@ -685,22 +762,21 @@ def homologar_coordenada(lat=None, lon=None, este=None, norte=None, comuna=None,
         )
 
     if regla_csv:
-        zona_ds38 = regla_csv.get("zona_ds38", zona_ds38)
-        limite_dia_csv = regla_csv.get("limite_dia", limite_dia)
-        limite_noche_csv = regla_csv.get("limite_noche", limite_noche)
+        zona_csv = str(regla_csv.get("zona_ds38", "")).strip()
+        categorias_csv = str(regla_csv.get("categorias", "")).strip()
 
-        limite_dia = (
-            f"{limite_dia_csv} dBA"
-            if str(limite_dia_csv).strip().isdigit()
-            else str(limite_dia_csv)
-        )
-        limite_noche = (
-            f"{limite_noche_csv} dBA"
-            if str(limite_noche_csv).strip().isdigit()
-            else str(limite_noche_csv)
-        )
-        criterio = regla_csv.get("fundamento", criterio)
-        categorias = regla_csv.get("categorias", categorias)
+        if zona_csv.upper() == "REVISAR" or categorias_csv.upper() == "REVISAR":
+            zona_ds38 = "Revisión requerida"
+            limite_dia = "—"
+            limite_noche = "—"
+            criterio = regla_csv.get("fundamento", criterio)
+            categorias = "Revisión normativa"
+        else:
+            zona_ds38 = regla_csv.get("zona_ds38", zona_ds38)
+            limite_dia = _formatear_limite(regla_csv.get("limite_dia", limite_dia))
+            limite_noche = _formatear_limite(regla_csv.get("limite_noche", limite_noche))
+            criterio = regla_csv.get("fundamento", criterio)
+            categorias = regla_csv.get("categorias", categorias)
 
     fuente = str(fila.get("fuente_normativa", "") or "")
     metodo = str(fila.get("metodo_busqueda", "") or "")
