@@ -144,9 +144,11 @@ def homologar_por_tabla_prc(comuna, zona_prc, nombre_zona):
     match = tabla[(tabla['comuna_norm'] == comuna_norm) & (tabla['nombre_norm'] == nombre_norm)]
     if not match.empty:
         return match.iloc[0].to_dict()
-    match = tabla[tabla['zona_norm'] == zona_norm]
-    if len(match) == 1:
-        return match.iloc[0].to_dict()
+    # No realizar respaldo por código de zona sin comuna.
+    # Códigos como H1, H2, ZC, IM1, etc. pueden repetirse entre comunas
+    # con significados normativos distintos. Si no existe coincidencia
+    # por comuna + código o comuna + nombre, se retorna None para que
+    # la homologación continúe mediante los atributos del IPT del punto.
     return None
 
 def homologar_por_tabla_prms(zona_prms, nombre_zona):
